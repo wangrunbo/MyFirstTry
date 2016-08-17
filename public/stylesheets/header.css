@@ -1,0 +1,41 @@
+body{
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+.header-main{
+    position: absolute;
+    width: 100%;
+    background-color: #6ebe25;
+    height: 52px;
+}
+
+.logo{
+    float: left;
+    margin-left: 15px;
+    width: auto;
+    height: 100%;
+}
+
+.top-work-box{
+    float: right;
+    height: 100%;
+    width: auto;
+    margin-right: 10px;
+}
+
+.top-link{
+    position: relative;
+    float: right;
+    margin-right: 5px;
+    height: 100%;
+    width: 70px;
+}
+
+.top-link-text{
+    position: absolute;
+    margin-top: 15px;
+    width: 100%;
+}
+
