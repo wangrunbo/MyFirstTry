@@ -71,7 +71,7 @@ app.use(function(err, req, res, next) {
     });
 });
 
-var port = 3000;
+var port = 3500;
 
 app.listen(port, function () {
     console.log('Start project on port '+ port)
