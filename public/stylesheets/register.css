@@ -1,0 +1,43 @@
+.page-register{
+    position: relative;
+    padding: 50px 150px 50px 150px;
+    height: auto;
+    width: auto;
+}
+
+.register-box{
+    position: relative;
+    height: auto;
+    width: 70%;
+}
+
+.register-title{
+    height: auto;
+    width: 100%;
+    color: #ff0000;
+}
+
+.register-list{
+    height: auto;
+    width: 100%;
+}
+
+.register-label{
+    width: auto;
+    height: 40px;
+    text-align: right;
+    color: #ff5e26;
+}
+
+.register-info{
+    width: 240px;
+    height: auto;
+}
+
+.register-input{
+    width: 220px;
+    height: 30px;
+    margin-left: 10px;
+}
+
+.register-

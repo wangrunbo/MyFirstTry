@@ -7,6 +7,8 @@ html
         title="新用户注册"
         meta(charset="UTF-8")
 
+        link(rel="stylesheet" type="text/css" href="/stylesheets/register.css")
+
     body
         include layout/_header
 
@@ -17,10 +19,77 @@ html
                         h1="新用户注册"
                     div.register-list
                         table
-                            tr
-                                th
-                                td
-
-
+                            form(method="post")
+                                tr
+                                    th.register-label="邮箱"
+                                    td.register-info
+                                        input.register-input(type="email")
+                                    td.register-alert="！必须项，用于登入你的帐号"
+                                tr
+                                    th.register-label="姓名"
+                                    td.register-info
+                                        input.register-input(type="email")
+                                    td.register-alert="！必须项"
+                                tr
+                                    th.register-label="密码"
+                                    td.register-info
+                                        input.register-input(type="email")
+                                    td.register-alert="！必须项"
+                                tr
+                                    th.register-label="确认密码"
+                                    td.register-info
+                                        input.register-input(type="email")
+                                    td.register-alert="！必须项"
+                                tr
+                                    th.register-label="性别"
+                                    td.register-info
+                                        div.register-input
+                                            input#gender0(type="radio" name="gender" value=0)
+                                            label.register-gender(for="gender0")="男"
+                                            input#gender1(type="radio" name="gender" value=1)
+                                            label.register-gender(for="gender1")="女"
+                                    td.register-alert="！必须项"
+                                tr
+                                    th.register-label="出生日期"
+                                    td.register-info
+                                        div.register-input
+                                            select.birthyear
+                                                -for (var y=0; y<50; y++)
+                                                    option=new Date().getFullYear() - y
+                                            span="年"
+                                            select.birthmonth
+                                                -for (var m=1; m<13; m++)
+                                                    if m<10
+                                                        m="0"+m
+                                                    option=m
+                                            span="月"
+                                            select.birthday
+                                                option
+                                            span="日"
+                                    td.register-alert="！必须项"
+                                tr
+                                    th.register-label="电话号码"
+                                    td.register-info
+                                        input.register-input(type="text")
+                                    td.register-alert="！必须项"
+                                tr
+                                    th.captcha-label="验证码"
+                                    td.captcha-info
+                                        input.captcha-input(type="text")
+                                        img.captcha-img
+                                    td.register-alert="请输入图片内的数字"
+                                tr
+                                    th.register-label
+                                    td.register-info
+                                        button.register-input(type="button")="提 交"
+                                    td.register-alert
+                                tr
+                                    th.register-label
+                                    td.register-info
+                                        input#policy(type="checkbox" value=true)
+                                        label(for="policy" style="font-size: small; color: orange;")="我已阅读并同意免责条款与保密协议"
+                                    td.register-alert
 
                 div.register-message
+
+        include layout/footer
