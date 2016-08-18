@@ -24,16 +24,16 @@ html
                             a.login-switch-btn(href="javascript:void(0);")="邮箱登入"
                     div.login-panel
                         div.login-alert
-                            span(id="login-alert")=""
+                            span#login-alert=""
                         div.login-form
-                            form(id="login" method="post")
+                            form#login(method="post")
                                 div.login-list
-                                    input.login-input(name="u" type="text" placeholder="邮 箱")
+                                    input.login-input(name="u" type="text" placeholder=" 邮 箱")
                                 div.login-list
-                                    input.login-input(name="p" type="password" placeholder="密 码")
+                                    input.login-input(name="p" type="password" placeholder=" 密 码")
                             div.login-list
                                 div.auto-login
-                                    input(id="auto-login" name="autoLogin" value=true type="checkbox")
+                                    input#auto-login(name="autoLogin" value=true type="checkbox")
                                     label(for="auto-login")="下次自动登入"
                                 div.get-pwd
                                     a(href="/findpwd")="忘记密码？"
