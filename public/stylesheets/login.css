@@ -14,12 +14,13 @@
 /*.message-box{*/
     /*position: relative;*/
     /*float: left;*/
-    /*width: 60%;*/
+    /*width: auto;*/
     /*height: auto;*/
 /*}*/
 
 .login-box{
     position: relative;
+    margin-left: 800px;
     width: 258px;
     height: 300px;
     border: 1px solid #E5E5EE;
