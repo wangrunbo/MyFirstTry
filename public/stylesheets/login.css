@@ -1,0 +1,104 @@
+.page-main{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.page-login{
+    position: relative;
+    padding: 50px 150px 50px 150px;
+    height: auto;
+    width: auto;
+}
+
+/*.message-box{*/
+    /*position: relative;*/
+    /*float: left;*/
+    /*width: 60%;*/
+    /*height: auto;*/
+/*}*/
+
+.login-box{
+    position: relative;
+    width: 258px;
+    height: 300px;
+    border: 1px solid #E5E5EE;
+}
+
+.login-header{
+    position: relative;
+    width: auto;
+    height: 40px;
+    border: 1px solid #1a1013;
+}
+
+.login-switch{
+    position: relative;
+    width: 50%;
+    height: 100%;
+}
+
+.login-switch-btn{
+    position: absolute;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-left: 30px;
+}
+
+.login-panel{
+    position: relative;
+    padding: 10px 10px 20px 10px;
+}
+
+.login-alert{
+    font-size: small;
+    height: 18px;
+    width: 100%;
+    color: #ff3d27;
+}
+
+.login-form{
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.login-list{
+    position: relative;
+    width: 100%;
+    height: 45px;
+}
+
+.login-input{
+    height: 30px;
+    width: 230px;
+}
+
+.auto-login{
+    position: relative;
+    width: 60%;
+    float: left;
+    height: auto;
+    font-size: small;
+}
+
+.get-pwd{
+    position: relative;
+    width: 40%;
+    float: right;
+    height: auto;
+    font-size: small;
+    text-align: right;
+}
+
+.login-btn{
+    position: relative;
+    width: 50%;
+    height: auto;
+    font-size: large;
+}
+
+.login-sub{
+    height: 30px;
+    width: 110px;
+}

@@ -1,0 +1,12 @@
+.footer-main{
+    position: relative;
+    height: auto;
+    width: 100%;
+    background-color: #6ebe25;
+    text-align: center;
+}
+
+.footer-panel{
+    position: relative;
+    width: auto;
+}

@@ -7,6 +7,8 @@ html
         title="Best memory belongs to us"
         meta(charset="UTF-8")
 
+        link(rel="stylesheet" type="text/css" href="/stylesheets/login.css")
+
     body
         include layout/_header
 
@@ -15,31 +17,31 @@ html
                 div(class="message-box")
                 div(class="login-box")
                     div(class="login-header")
-                        div(class="login-switch")
+                        div(class="login-switch" style="float: left")
                             a(class="login-switch-btn" href="javascript:void(0);")="其他帐号登入"
-                        div(class="login-switch[focus]")
+                        div(class="login-switch" style="float: right")
                             a(class="login-switch-btn" href="javascript:void(0);")="邮箱登入"
                     div(class="login-panel")
-                        div(class="login-alert" style="display: none")
+                        div(class="login-alert")
                             span(id="login-alert")=""
                         div(class="login-form")
                             form(id="login" method="post")
                                 div(class="login-list")
-                                    input(name="u" type="text" placeholder="邮箱")
+                                    input(class="login-input" name="u" type="text" placeholder="邮箱")
                                 div(class="login-list")
-                                    input(name="p" type="password" placeholder="密码")
+                                    input(class="login-input" name="p" type="password" placeholder="密码")
                             div(class="login-list")
                                 div(class="auto-login")
-                                    label(for="auto-login")="下次自动登入"
                                     input(id="auto-login" name="autoLogin" value=true type="checkbox")
+                                    label(for="auto-login")="下次自动登入"
                                 div(class="get-pwd")
                                     a(href="/findpwd")="忘记密码？"
                             div(class="login-list")
-                                div(class="login-btn")
-                                    a(class="login-btn[0]" href="/register")
-                                        button(class="login-btn[1]" type="button")="注 册"
-                                div(class="login-btn")
-                                    a(class="login-btn[0]" href="/register")
-                                        button(class="login-btn[2]" type="button")="登 入"
+                                div(class="login-btn" style="float: left")
+                                    a(href="/register")
+                                        button(class="login-sub" type="button")="注 册"
+                                div(class="login-btn" style="float: right")
+                                    a(href="/register")
+                                        button(class="login-sub" type="button")="登 入"
 
         include layout/footer
