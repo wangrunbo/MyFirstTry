@@ -12,37 +12,37 @@ html
     body
         include layout/_header
 
-        div(class="page-main")
-            div(class="page-login")
-                div(class="message-box")
+        div.page-main
+            div.page-login
+                div.message-box
                     span=""
-                div(class="login-box")
-                    div(class="login-header")
-                        div(class="login-switch" style="float: left")
-                            a(class="login-switch-btn" href="javascript:void(0);")="其他帐号登入"
-                        div(class="login-switch" style="float: right")
-                            a(class="login-switch-btn" href="javascript:void(0);")="邮箱登入"
-                    div(class="login-panel")
-                        div(class="login-alert")
+                div.login-box
+                    div.login-header
+                        div.login-switch(style="float: left")
+                            a.login-switch-btn(href="javascript:void(0);")="其他帐号登入"
+                        div.login-switch(style="float: right")
+                            a.login-switch-btn(href="javascript:void(0);")="邮箱登入"
+                    div.login-panel
+                        div.login-alert
                             span(id="login-alert")=""
-                        div(class="login-form")
+                        div.login-form
                             form(id="login" method="post")
-                                div(class="login-list")
-                                    input(class="login-input" name="u" type="text" placeholder="邮 箱")
-                                div(class="login-list")
-                                    input(class="login-input" name="p" type="password" placeholder="密 码")
-                            div(class="login-list")
-                                div(class="auto-login")
+                                div.login-list
+                                    input.login-input(name="u" type="text" placeholder="邮 箱")
+                                div.login-list
+                                    input.login-input(name="p" type="password" placeholder="密 码")
+                            div.login-list
+                                div.auto-login
                                     input(id="auto-login" name="autoLogin" value=true type="checkbox")
                                     label(for="auto-login")="下次自动登入"
-                                div(class="get-pwd")
+                                div.get-pwd
                                     a(href="/findpwd")="忘记密码？"
-                            div(class="login-list")
-                                div(class="login-btn" style="float: left")
+                            div.login-list
+                                div.login-btn(style="float: left")
                                     a(href="/register")
-                                        button(class="login-sub" type="button" style="float: left")="注 册"
-                                div(class="login-btn" style="float: right")
+                                        button.login-sub(type="button" style="float: left")="注 册"
+                                div.login-btn(style="float: right")
                                     a(href="/register")
-                                        button(class="login-sub" type="button" style="float: right")="登 入"
+                                        button.login-sub(type="button" style="float: right")="登 入"
 
         include layout/footer
