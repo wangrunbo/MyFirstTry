@@ -40,4 +40,54 @@
     margin-left: 10px;
 }
 
-.register-
+.register-alert{
+    font-size: small;
+    color: #ffb81c;
+}
+
+.register-gender{
+    width: 30%;
+    height: auto;
+    margin-top: 3px;
+    float: left;
+    font-size: large;
+}
+
+.register-birthday{
+    width: auto;
+    height: auto;
+    margin-top: 3px;
+}
+
+.birthday-select{
+    width: auto;
+    height: 24px;
+}
+
+.birthday-text{
+    font-size: large;
+}
+
+.captcha-label{
+    width: auto;
+    height: 50px;
+    text-align: right;
+}
+
+.captcha-info{
+    width: auto;
+    height: auto;
+}
+
+.captcha-input{
+    width: 40%;
+    height: 48px;
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.captcha-img{
+    width: auto;
+    height: 48px;
+    margin-left: 10px;
+}

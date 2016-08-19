@@ -6,8 +6,12 @@ html
     head
         title="新用户注册"
         meta(charset="UTF-8")
-
+        //Import jQuery and other required scripts
+        include scripts
+        //Import css and javascripts
         link(rel="stylesheet" type="text/css" href="/stylesheets/register.css")
+        script(type='text/javascript' src='/javascripts/register.js')
+
 
     body
         include layout/_header
@@ -19,75 +23,82 @@ html
                         h1="新用户注册"
                     div.register-list
                         table
-                            form(method="post")
+                            form#register(method="post")
                                 tr
                                     th.register-label="邮箱"
                                     td.register-info
-                                        input.register-input(type="email")
-                                    td.register-alert="！必须项，用于登入你的帐号"
+                                        input.register-input#email(name="email" type="email")
+                                    td.register-alert="！必须项，用于登入您的帐号"
                                 tr
                                     th.register-label="姓名"
                                     td.register-info
-                                        input.register-input(type="email")
+                                        input.register-input#name(name="name" type="text")
                                     td.register-alert="！必须项"
                                 tr
                                     th.register-label="密码"
                                     td.register-info
-                                        input.register-input(type="email")
-                                    td.register-alert="！必须项"
+                                        input.register-input#pwd(name="password" type="password")
+                                    td.register-alert="！必须项，请输入8～16位密码，由字母和数字组成"
                                 tr
                                     th.register-label="确认密码"
                                     td.register-info
-                                        input.register-input(type="email")
-                                    td.register-alert="！必须项"
+                                        input.register-input#pwd-confirm(name="password-confirm" type="password")
+                                    td.register-alert="！必须项，再次输入密码"
                                 tr
                                     th.register-label="性别"
                                     td.register-info
-                                        div.register-input
-                                            input#gender0(type="radio" name="gender" value=0)
-                                            label.register-gender(for="gender0")="男"
-                                            input#gender1(type="radio" name="gender" value=1)
-                                            label.register-gender(for="gender1")="女"
+                                        div.register-input#gender
+                                            div.register-gender
+                                                input#gender0(type="radio" name="gender" value=0)
+                                                label(for="gender0")="男"
+                                            div.register-gender
+                                                input#gender1(type="radio" name="gender" value=1)
+                                                label(for="gender1")="女"
                                     td.register-alert="！必须项"
                                 tr
                                     th.register-label="出生日期"
                                     td.register-info
                                         div.register-input
-                                            select.birthyear
-                                                -for (var y=0; y<50; y++)
-                                                    option=new Date().getFullYear() - y
-                                            span="年"
-                                            select.birthmonth
-                                                -for (var m=1; m<13; m++)
-                                                    if m<10
-                                                        m="0"+m
-                                                    option=m
-                                            span="月"
-                                            select.birthday
-                                                option
-                                            span="日"
+                                            div.register-birthday
+                                                select.birthday-select(name="birth-year")
+                                                    -for (var y=0; y<50; y++)
+                                                        option=new Date().getFullYear() - y
+                                                span.birthday-text=" 年 "
+                                                select.birthday-select(name="birth-month")
+                                                    -for (var m=1; m<13; m++)
+                                                        if m<10
+                                                            m="0"+m
+                                                        option=m
+                                                span.birthday-text=" 月 "
+                                                select.birthday-select(name="birth-day")
+                                                    option
+                                                span.birthday-text=" 日 "
                                     td.register-alert="！必须项"
                                 tr
                                     th.register-label="电话号码"
                                     td.register-info
-                                        input.register-input(type="text")
+                                        input.register-input#tel(name="tel" type="tel")
                                     td.register-alert="！必须项"
                                 tr
                                     th.captcha-label="验证码"
                                     td.captcha-info
-                                        input.captcha-input(type="text")
+                                        input.captcha-input#captcha(name="captcha" type="text")
                                         img.captcha-img
-                                    td.register-alert="请输入图片内的数字"
+                                    td.register-alert="请输入图片内的文字"
                                 tr
                                     th.register-label
                                     td.register-info
-                                        button.register-input(type="button")="提 交"
+                                        button#register-submit.register-input(type="button")="提 交"
                                     td.register-alert
+                                        a(href="/login")="已有帐号？点击登入"
                                 tr
                                     th.register-label
                                     td.register-info
-                                        input#policy(type="checkbox" value=true)
-                                        label(for="policy" style="font-size: small; color: orange;")="我已阅读并同意免责条款与保密协议"
+                                        input#policy(name="policy" type="checkbox" value=true checked="checked")
+                                        label(for="policy" style="font-size: small; color: orange;")="我已阅读并同意"
+                                            a(href="")="免责条款"
+                                            span="与"
+                                            a(href="")="保密协议"
                                     td.register-alert
 
                 div.register-message
