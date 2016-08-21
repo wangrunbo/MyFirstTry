@@ -9,4 +9,10 @@ router.get('/', function(req, res) {
     res.render('register');
 });
 
+/* POST to register new user */
+router.post('/', function (req, res) {
+
+});
+
+
 module.exports = router;

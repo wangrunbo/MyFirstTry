@@ -2,7 +2,6 @@
  * Created by oujunhaku on 16/08/19.
  */
 $(function () {
-
     // click submit button
     $("#register-submit").click(function () {
 
@@ -19,8 +18,8 @@ $(function () {
         var patterns = {};
 
         patterns.email = /^[a-zA-Z0-9_-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$/;
-        patterns.password = ;
-        patterns.tel = ;
+        // patterns.password = ;
+        // patterns.tel = ;
 
 
         // validate input fields
