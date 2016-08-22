@@ -1,7 +1,7 @@
 //
    Created by oujunhaku on 16/08/18.
 
-doctype
+doctype html
 html
     head
         title="新用户注册"
@@ -11,9 +11,9 @@ html
         //Import css and javascripts
         link(rel="stylesheet" type="text/css" href="/stylesheets/register.css")
         script(type='text/javascript' src='/javascripts/register.js')
+        script(type='text/javascript' src='javascripts/dateSelect.js')
 
-
-    body
+    body(onload="date_select_init()")
         include layout/_header
 
         div.page-main
@@ -60,18 +60,11 @@ html
                                     td.register-info
                                         div.register-input
                                             div.register-birthday
-                                                select.birthday-select(name="birth-year")
-                                                    -for (var y=0; y<50; y++)
-                                                        option=new Date().getFullYear() - y
+                                                select.birthday-select#y(name="birth-year" onChange="swap_day()")
                                                 span.birthday-text=" 年 "
-                                                select.birthday-select(name="birth-month")
-                                                    -for (var m=1; m<13; m++)
-                                                        if m<10
-                                                            m="0"+m
-                                                        option=m
+                                                select.birthday-select#m(name="birth-month" onChange="swap_day()")
                                                 span.birthday-text=" 月 "
-                                                select.birthday-select(name="birth-day")
-                                                    option
+                                                select.birthday-select#d(name="birth-day")
                                                 span.birthday-text=" 日 "
                                     td.register-alert="！必须项"
                                 tr
@@ -96,9 +89,9 @@ html
                                     td.register-info
                                         input#policy(name="policy" type="checkbox" value=true checked="checked")
                                         label(for="policy" style="font-size: small; color: orange;")="我已阅读并同意"
-                                            a(href="")="免责条款"
-                                            span="与"
-                                            a(href="")="保密协议"
+                                        a(href="")="免责条款"
+                                        span="与"
+                                        a(href="")="保密协议"
                                     td.register-alert
 
                 div.register-message
