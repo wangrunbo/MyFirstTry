@@ -2,7 +2,10 @@
  * Created by oujunhaku on 16/08/19.
  */
 $(function () {
-
+    /**
+     * register submit validate
+     * @param pass[email, name, pwd, pwd-confirm, gender, tel]
+     */
     var pass = [0, 0, 0, 0, 0, 0];
 
     // input fields
@@ -88,47 +91,97 @@ $(function () {
     });
 
     pwdField.blur(function () {
-        if (pwdField.val() != ""){
-            if (pwdConfirmField.val() != "" && pass[3] == 1){
-                if (pwdConfirmField.val() != pwdField.val()){
+        if (pwdField.val() == "" && pwdConfirmField.val() == ""){
+            pwdField.parent().parent().find("td:eq(1)").text("！必须项，请输入8～16位密码，由字母和数字组成");
+            pwdConfirmField.parent().parent().find("td:eq(1)").text("！必须项，再次输入密码");
+            pwdField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
+            pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
+            pass[2] = 0;
+            pass[3] = 0;
+        }else if (pwdField.val() == "" && pwdConfirmField.val() != ""){
+            pwdField.parent().parent().find("td:eq(1)").text(" ❌ 密码只能由8~16位字母及数字组成");
+            pwdField.parent().parent().find("td:eq(1)").css("color", "red");
+            pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 请输入有效密码");
+            pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
+            pass[2] = 0;
+            pass[3] = 0;
+        }else if (pwdField.val() != "" && pwdConfirmField.val() == ""){
+            if(patterns.password.test(pwdField.val())){
+                pwdField.parent().parent().find("td:eq(1)").text(" √");
+                pwdField.parent().parent().find("td:eq(1)").css("color", "green");
+                pwdConfirmField.parent().parent().find("td:eq(1)").text("！必须项，再次输入密码");
+                pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
+                pass[2] = 1;
+                pass[3] = 0;
+            }else{
+                pwdField.parent().parent().find("td:eq(1)").text(" ❌ 密码只能由8~16位字母及数字组成");
+                pwdField.parent().parent().find("td:eq(1)").css("color", "red");
+                pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 请输入有效密码");
+                pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
+                pass[2] = 0;
+                pass[3] = 0;
+            }
+        }else {
+            if(patterns.password.test(pwdField.val())){
+                pwdField.parent().parent().find("td:eq(1)").text(" √");
+                pwdField.parent().parent().find("td:eq(1)").css("color", "green");
+                pass[2] = 1;
+                if (pwdField.val() == pwdConfirmField.val()){
+                    pwdConfirmField.parent().parent().find("td:eq(1)").text(" √");
+                    pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "green");
+                    pass[3] = 1;
+                }else {
                     pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 两次输入的密码不一致");
                     pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
                     pass[3] = 0;
                 }
-            }
-            if (!patterns.password.test(pwdField.val())){
+            }else {
                 pwdField.parent().parent().find("td:eq(1)").text(" ❌ 密码只能由8~16位字母及数字组成");
                 pwdField.parent().parent().find("td:eq(1)").css("color", "red");
+                pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 请输入有效密码");
+                pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
                 pass[2] = 0;
-            }else{
-                pwdField.parent().parent().find("td:eq(1)").text(" √");
-                pwdField.parent().parent().find("td:eq(1)").css("color", "green");
-                pass[2] = 1;
+                pass[3] = 0;
             }
-        }else{
-            pass[2] = 0;
         }
     });
 
     pwdConfirmField.blur(function () {
-        if (pass[2] == 1){
-            if (pwdConfirmField.val() != ""){
-                if (pwdConfirmField.val() != pwdField.val()){
-                    pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 两次输入的密码不一致");
-                    pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
-                    pass[3] = 0;
-                }else{
+        if (pwdField.val() == "" && pwdConfirmField.val() == ""){
+            pwdField.parent().parent().find("td:eq(1)").text("！必须项，请输入8～16位密码，由字母和数字组成");
+            pwdConfirmField.parent().parent().find("td:eq(1)").text("！必须项，再次输入密码");
+            pwdField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
+            pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
+            pass[2] = 0;
+            pass[3] = 0;
+        }else if (pwdField.val() == "" && pwdConfirmField.val() != ""){
+            pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 请输入有效密码");
+            pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
+            pass[2] = 0;
+            pass[3] = 0;
+        }else if (pwdField.val() != "" && pwdConfirmField.val() == ""){
+            pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 请再次输入密码");
+            pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
+            pass[3] = 0;
+        }else{
+            if (patterns.password.test(pwdField.val())){
+                if (pwdConfirmField.val() == pwdField.val()){
                     pwdConfirmField.parent().parent().find("td:eq(1)").text(" √");
                     pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "green");
                     pass[3] = 1;
+                }else {
+                    pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 两次输入的密码不一致");
+                    pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
+                    pass[3] = 0;
                 }
             }else{
+                pwdField.parent().parent().find("td:eq(1)").text(" ❌ 密码只能由8~16位字母及数字组成");
+                pwdField.parent().parent().find("td:eq(1)").css("color", "red");
+                pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 请输入有效密码");
+                pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
+                pass[2] = 0;
                 pass[3] = 0;
             }
-        }else{
-            pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 密码只能由8~16位字母及数字组成");
-            pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red");
-            pass[3] = 0;
         }
     });
 
