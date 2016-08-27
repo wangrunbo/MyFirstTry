@@ -14,8 +14,20 @@ $(function () {
     var pwdField = $("#pwd");
     var pwdConfirmField = $("#pwd-confirm");
     var genderField = $("#gender");
+    var birthdayField = $("#birthday");
     var telField = $("#tel");
     var captchaField = $("#captcha");
+    var policy = $("#policy");
+    var submit = $("#register-submit");
+
+    //check policy
+    policy.change(function () {
+        if (policy.is(":checked")){
+            submit.attr("disabled", false)
+        }else{
+            submit.attr("disabled", true)
+        }
+    });
 
     // Regular Expression
     var patterns = {};
@@ -25,39 +37,52 @@ $(function () {
     patterns.tel = /^(13[0-9]|14[5|7]|15[0-3|5-9]|18[0-3|5-9])\d{8}|\d{3}-\d{4}-\d{4}$/;
 
     // click submit button
-    $("#register-submit").click(function () {
+    submit.click(function () {
 
         // validate input fields
         if (emailField.val()==""){
             emailField.parent().parent().find("td:eq(1)").text(" ❌ 请输入有效邮箱");
             emailField.parent().parent().find("td:eq(1)").css("color", "red")
+        }else if (patterns.email.test(emailField.val())){
+            pass[0] = 1;
         }
         if (nameField.val()==""){
             nameField.parent().parent().find("td:eq(1)").text(" ❌ 请输入您的姓名");
             nameField.parent().parent().find("td:eq(1)").css("color", "red")
+        }else{
+            pass[1] = 1;
         }
+
         if (pwdField.val()==""){
             pwdField.parent().parent().find("td:eq(1)").text(" ❌ 请设置登录密码");
             pwdField.parent().parent().find("td:eq(1)").css("color", "red")
+        }else if (patterns.password.test(pwdField.val())){
+            pass[2] = 1;
         }
         if (pwdConfirmField.val()==""){
             pwdConfirmField.parent().parent().find("td:eq(1)").text(" ❌ 请再次输入密码");
             pwdConfirmField.parent().parent().find("td:eq(1)").css("color", "red")
+        }else if (pwdConfirmField.val() == pwdField.val()){
+            pass[3] = 1;
         }
         if (!$("#gender0").is(":checked") && !$("#gender1").prop("checked")){
             genderField.parent().parent().find("td:eq(1)").text(" ❌ 请选择您的性别");
             genderField.parent().parent().find("td:eq(1)").css("color", "red")
+        }else {
+            pass[4] = 1;
         }
         if (telField.val()==""){
             telField.parent().parent().find("td:eq(1)").text(" ❌ 请输入您的手机号码");
             telField.parent().parent().find("td:eq(1)").css("color", "red")
+        }else if (patterns.tel.test(telField.val())){
+            pass[5] = 1;
         }
         if (captchaField.val()==""){
             captchaField.parent().parent().find("td:eq(1)").text(" ❌ 验证码不能为空");
             captchaField.parent().parent().find("td:eq(1)").css("color", "red")
         }
 
-        if (pass.indexOf(0) == -1){
+        if (pass.indexOf(0) == -1 && policy.is(":checked")){
             $("#register").submit();
         }
 
@@ -186,7 +211,14 @@ $(function () {
     });
 
     genderField.change(function () {
+        genderField.parent().parent().find("td:eq(1)").text(" √");
+        genderField.parent().parent().find("td:eq(1)").css("color", "green");
         pass[4] = 1;
+    });
+
+    telField.focus(function () {
+        birthdayField.parent().parent().find("td:eq(1)").text(" √");
+        birthdayField.parent().parent().find("td:eq(1)").css("color", "green");
     });
 
     telField.blur(function () {

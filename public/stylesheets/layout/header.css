@@ -4,6 +4,10 @@ body{
     right: 0;
 }
 
+a,input{
+    outline: none;
+}
+
 .header-main{
     position: relative;
     width: 100%;
