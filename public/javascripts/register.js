@@ -82,6 +82,9 @@ $(function () {
             captchaField.parent().parent().find("td:eq(1)").css("color", "red")
         }
 
+        // for test
+        // pass=[1, 1, 1, 1, 1, 1];
+
         if (pass.indexOf(0) == -1 && policy.is(":checked")){
             $("#register").submit();
         }

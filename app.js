@@ -6,11 +6,12 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes/index');
+var routes = require('./routes/main');
 var users = require('./routes/users');
 
 var login = require('./routes/login');
 var register = require('./routes/register');
+var index = require('./routes/index');
 
 var test = require('./routes/test');
 var adjust = require('./routes/adjust');
@@ -48,6 +49,7 @@ app.use('/users', users);
 
 app.use('/login', login);
 app.use('/register', register);
+app.use('/index', index);
 
 app.use('/test', test);
 app.use('/adjust', adjust);

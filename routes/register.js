@@ -29,10 +29,10 @@ router.get('/validate', function (req, res) {
         }else {
             var colUsers = db.collection('users');
 
-            colUsers.find({userEmail: req.query.email}).toArray(function (err, arr) {
+            colUsers.findOne({userEmail: req.query.email}, function (err, item) {
                 if (err){
                     throw err;
-                }else if (arr.length == 0){
+                }else if (item == null){
                     res.send(true)
                 }else {
                     res.send(false)
@@ -68,10 +68,10 @@ router.post('/', function (req, res) {
 
             // validate data
             var pass = true;
-            colUsers.find({userEmail: registerData.email}).toArray(function (err, arr) {
+            colUsers.findOne({userEmail: registerData.email}, function (err, item) {
                 if (err){
                     throw err;
-                }else if (arr.length != 0){
+                }else if (item != null){
                     pass = false;
                 }
             });

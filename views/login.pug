@@ -10,6 +10,7 @@ html
         include scripts
         //Import css and javascripts
         link(rel="stylesheet" type="text/css" href="/stylesheets/login.css")
+        script(type='text/javascript' src='/javascripts/login.js')
 
     body
         include layout/_header
@@ -28,14 +29,13 @@ html
                         div.login-alert
                             span#login-alert=""
                         div.login-form
-                            form#login(method="post")
-                                div.login-list
-                                    input.login-input(name="u" type="text" placeholder=" 邮 箱")
-                                div.login-list
-                                    input.login-input(name="p" type="password" placeholder=" 密 码")
+                            div.login-list
+                                input.login-input#u(type="text" placeholder=" 邮 箱")
+                            div.login-list
+                                input.login-input#p(type="password" placeholder=" 密 码")
                             div.login-list
                                 div.auto-login
-                                    input#auto-login(name="autoLogin" value=true type="checkbox")
+                                    input#auto-login(value=true type="checkbox")
                                     label(for="auto-login")="下次自动登入"
                                 div.get-pwd
                                     a(href="/findpwd")="忘记密码？"
@@ -44,7 +44,6 @@ html
                                     a(href="/register")
                                         button.login-sub(type="button" style="float: left")="注 册"
                                 div.login-btn(style="float: right")
-                                    a(href="/register")
-                                        button.login-sub(type="button" style="float: right")="登 入"
+                                    button.login-sub#login-sub(type="button" style="float: right")="登 入"
 
         include layout/footer
