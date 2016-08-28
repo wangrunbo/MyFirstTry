@@ -4,10 +4,44 @@
 var express = require('express');
 var router = express.Router();
 
+var now = new Date();
+var today = now.toISOString().substring(0, 10);
+
+
 /* GET register page. */
 router.get('/', function(req, res) {
     res.render('register');
 });
+
+
+/* validate register email by Ajax */
+router.get('/validate', function (req, res) {
+    var email = req.body;
+
+    //DB設定
+    var mongodb = require('mongodb');
+    var server = new mongodb.Server('localhost', 27017);
+    var db = new mongodb.Db('DigitalAlumniRecord', server, {safe: true});
+
+    db.open(function (err, db) {
+        if (err){
+            throw err;
+        }else {
+            var colUsers = db.collection('users');
+
+            colUsers.find({userEmail: req.query.email}).toArray(function (err, arr) {
+                if (err){
+                    throw err;
+                }else if (arr.length == 0){
+                    res.send(true)
+                }else {
+                    res.send(false)
+                }
+            });
+        }
+    })
+});
+
 
 /* POST to register new user */
 router.post('/', function (req, res) {
@@ -19,7 +53,7 @@ router.post('/', function (req, res) {
     var server = new mongodb.Server('localhost', 27017);
     var db = new mongodb.Db('DigitalAlumniRecord', server, {safe: true});
 
-    db.open(function (err,db) {
+    db.open(function (err, db) {
         if (err){
             throw err;
         }else {
@@ -34,7 +68,7 @@ router.post('/', function (req, res) {
 
             // validate data
             var pass = true;
-            colUsers.find({email: registerData.email}).toArray(function (err, arr) {
+            colUsers.find({userEmail: registerData.email}).toArray(function (err, arr) {
                 if (err){
                     throw err;
                 }else if (arr.length != 0){
@@ -54,12 +88,21 @@ router.post('/', function (req, res) {
             if (pass == false){
                 res.render('exception');
             }else {
+                var insertData = {
+                    userEmail: registerData.email,
+                    userName: registerData.name,
+                    userPassword: registerData.password,
+                    userGender: registerData.gender,
+                    userBirthday: registerData['birth-year'] +'-'+ registerData['birth-month'] +'-'+ registerData['birth-day'],
+                    userTel: registerData.tel,
+                    userSignUpDate: today,
+                    userBanFlag: false
+                };
                 //insert into DB
-                colUsers.insert(registerData, function (err, result) {
+                colUsers.insert(insertData, function (err) {
                     if (err){
                         throw err;
                     }else {
-                        console.log(result.email);
                         res.render('register_success')
                     }
                 })

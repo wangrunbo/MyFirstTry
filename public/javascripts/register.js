@@ -96,11 +96,25 @@ $(function () {
                 emailField.parent().parent().find("td:eq(1)").css("color", "red");
                 pass[0] = 0;
             }else{
-                emailField.parent().parent().find("td:eq(1)").text(" √");
-                emailField.parent().parent().find("td:eq(1)").css("color", "green");
-                pass[0] = 1;
+                $.get(
+                    "/register/validate",
+                    {email: emailField.val()},
+                    function (result) {
+                        if (result == true){
+                            emailField.parent().parent().find("td:eq(1)").text(" √");
+                            emailField.parent().parent().find("td:eq(1)").css("color", "green");
+                            pass[0] = 1;
+                        }else {
+                            emailField.parent().parent().find("td:eq(1)").text(" ❌ 该邮箱已被注册");
+                            emailField.parent().parent().find("td:eq(1)").css("color", "red");
+                            pass[0] = 0;
+                        }
+                    }
+                );
             }
         }else{
+            emailField.parent().parent().find("td:eq(1)").text("！必须项，用于登入您的帐号");
+            emailField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
             pass[0] = 0;
         }
     });
@@ -111,6 +125,8 @@ $(function () {
             nameField.parent().parent().find("td:eq(1)").css("color", "green");
             pass[1] = 1;
         }else{
+            nameField.parent().parent().find("td:eq(1)").text("！必须项");
+            nameField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
             pass[1] = 0;
         }
     });
@@ -233,6 +249,8 @@ $(function () {
                 pass[5] = 1;
             }
         }else{
+            telField.parent().parent().find("td:eq(1)").text("！必须项");
+            telField.parent().parent().find("td:eq(1)").css("color", "#ffb81c");
             pass[5] = 0;
         }
     })

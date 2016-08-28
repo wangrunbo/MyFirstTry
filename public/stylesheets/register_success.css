@@ -1,0 +1,10 @@
+.page-register-success{
+    position: relative;
+    padding: 50px 150px 50px 150px;
+    height: 300px;
+    width: 350px;
+}
+
+.register-success-title{
+    color: red;
+}

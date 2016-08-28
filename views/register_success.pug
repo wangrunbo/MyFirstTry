@@ -9,11 +9,25 @@ html
         //Import jQuery and other required scripts
         include scripts
         //Import css and javascripts
+        link(rel="stylesheet" type="text/css" href="/stylesheets/register_success.css")
+        script(type='text/javascript' src='/javascripts/register_success.js')
+
 
     body
         include layout/_header
 
         div.page-main
-
+            div.page-register-success
+                div.register-success-img
+                    img(alt="注册成功")
+                div.register-success-title
+                    h1="注册成功"
+                div.register-success-content
+                    p
+                        span="页面将在"
+                        span#timing
+                        span="秒后跳转..."
+                    p="若页面没有自动跳转，请"
+                        a(href="/")="点击链接"
 
         include layout/footer
