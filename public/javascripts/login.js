@@ -33,8 +33,8 @@ $(function () {
                     }else if (result.result == 3){
                         alertField.text("! 密码不能为空");
                     }else {
-                        alert(document.referrer);
-                        window.location = document.referrer;
+                        // alert(document.referrer);
+                        window.location.href = document.referrer;
                     }
                 }
             )
